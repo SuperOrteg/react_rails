@@ -12,6 +12,8 @@ gem "sqlite3", "~> 1.4"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
@@ -46,3 +48,8 @@ group :development do
   # gem "spring"
 end
 
+gem 'dotenv-rails', groups: [:development, :test]
+
+gem "devise", "~> 4.8"
+gem "devise-jwt", "~> 0.9.0"
+gem "rack-cors", "~> 1.1"
