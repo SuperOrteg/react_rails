@@ -28,16 +28,20 @@ class ArticlesController < ApplicationController
 
   # PATCH/PUT /articles/1
   def update
-    if @article.update(article_params)
-      render json: @article
-    else
-      render json: @article.errors, status: :unprocessable_entity
+    if current_user.id == @article.user_id
+      if @article.update(article_params)
+        render json: @article
+      else
+        render json: @article.errors, status: :unprocessable_entity
+      end
     end
   end
 
   # DELETE /articles/1
   def destroy
-    @article.destroy
+    if current_user.id == @article.user_id
+        @article.destroy
+    end
   end
 
   private
