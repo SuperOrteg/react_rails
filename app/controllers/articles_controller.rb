@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show update destroy ]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: %i[ create edit destroy ]
 
   # GET /articles
   def index
@@ -17,6 +17,7 @@ class ArticlesController < ApplicationController
   # POST /articles
   def create
     @article = Article.new(article_params)
+    @article.user_id = current_user.id
 
     if @article.save
       render json: @article, status: :created, location: @article
